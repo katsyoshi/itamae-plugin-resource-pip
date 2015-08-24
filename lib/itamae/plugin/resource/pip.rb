@@ -46,6 +46,11 @@ module Itamae
           updated!
         end
 
+        def action_uninstall(action_options)
+          install!
+          updated!
+        end
+
         private
 
         def installed_pips
@@ -70,6 +75,9 @@ module Itamae
           case @current_action
           when :upgrade
             cmd << '--upgrade'
+          when :uninstall
+            cmd.find {|w| w =~ /\Ainstall\z/ }.sub!(/\A/, 'un')
+            cmd << '-y'
           end
 
           cmd
