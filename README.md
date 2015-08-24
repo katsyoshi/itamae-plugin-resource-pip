@@ -22,7 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+write recipe:
+```ruby
+require 'itamae/plugin/resource/pip'
+pip "tornado" do
+  pip_binary "/home/user/.pyenv/shims/pip"
+  version "4.1"
+end
+```
+
+run script:
+```console
+$ itamae local recipe.rb
+```
 
 ## Development
 
@@ -32,5 +44,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/itamae-plugin-resource-pip. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/katyoshi/itamae-plugin-resource-pip. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
