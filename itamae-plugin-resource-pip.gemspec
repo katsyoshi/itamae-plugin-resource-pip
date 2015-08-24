@@ -1,11 +1,10 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'itamae/plugin/resource/pip/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "itamae-plugin-resource-pip"
-  spec.version       = Itamae::Plugin::Resource::Pip::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["MATSUMOTO, Katsuyoshi"]
   spec.email         = ["github@katsyoshi.org"]
 
