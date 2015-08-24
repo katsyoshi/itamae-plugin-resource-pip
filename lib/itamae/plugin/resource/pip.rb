@@ -19,7 +19,7 @@ module Itamae
         end
 
         def set_current_attributes
-          installed = installed_pips.find {|g| g[:name] == attributes.package_name }
+          installed = installed_pips.find {|pip| pip[:name] == attributes.package_name }
           current.installed = !!installed
 
           if current.installed
