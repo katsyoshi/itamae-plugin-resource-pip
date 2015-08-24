@@ -17,6 +17,29 @@ module Itamae
             attributes.installed = false
           end
         end
+
+        def set_current_attributes
+          installed = installed_pips.find {|g| g[:name] == attributes.package_name }
+          current.installed = !!installed
+
+          if current.installed
+            version = installed[:version]
+            current.version = version if version != attributes.version
+          end
+        end
+
+        private
+
+        def installed_pips
+          pips = []
+          run_command([*Array(attributes.pip_binary), 'freeze']).stdout.each_line do |line|
+            name, version = line.split(/==/)
+            pips << {name: name, version: version}
+          end
+          pips
+        rescue Backend::CommandExecutionError
+          []
+        end
       end
     end
   end
