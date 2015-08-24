@@ -40,6 +40,12 @@ module Itamae
           end
         end
 
+        def action_upgrade(action_options)
+          return if current.installed && attributes.version && attributes.version == current.version
+          install!
+          updated!
+        end
+
         private
 
         def installed_pips
@@ -60,6 +66,12 @@ module Itamae
           else
             cmd << attributes.package_name
           end
+
+          case @current_action
+          when :upgrade
+            cmd << '--upgrade'
+          end
+
           cmd
         end
 
