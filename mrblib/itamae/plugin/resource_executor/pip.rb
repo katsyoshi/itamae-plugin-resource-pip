@@ -33,7 +33,7 @@ module MItamae
         def installed_pips
           pips = []
           run_command([*Array(attributes.pip_binary), 'freeze']).stdout.each_line do |line|
-            name, version = line.split(/==/)
+            name, version = line.chomp.split(/==/)
             pips << {name: name, version: version}
           end
           pips
@@ -43,7 +43,7 @@ module MItamae
 
         def set_desired_attributes(desired, action)
           case action
-          when :install
+          when :install, :upgrade
             desired.installed = true
           when :uninstall
             desired.installed = false
@@ -51,6 +51,9 @@ module MItamae
         end
 
         def build_pip_install_command
+        end
+
+        def install!
           cmd = [*Array(attributes.pip_binary), 'install']
           if attributes.version
             cmd << "#{attributes.package_name}==#{attributes.version}"
@@ -58,19 +61,19 @@ module MItamae
             cmd << attributes.package_name
           end
 
-          case @current_action
-          when :upgrade
-            cmd << '--upgrade'
-          when :uninstall
-            cmd.find {|w| w =~ /\Ainstall\z/ }.sub!(/\A/, 'un')
-            cmd << '-y'
-          end
-
-          cmd
+          run_command(cmd)
         end
 
-        def install!
-          run_command(build_pip_install_command)
+        def uninstall!
+          cmd = [*Array(attributes.pip_binary), 'uninstall']
+          if attributes.version
+            cmd << "#{attributes.package_name}==#{attributes.version}"
+          else
+            cmd << attributes.package_name
+          end
+          cmd << '-y'
+
+          run_command(cmd)
         end
 			end
     end
