@@ -57,7 +57,7 @@ module Itamae
           pips = []
           run_command([*Array(attributes.pip_binary), 'freeze']).stdout.each_line do |line|
             name, version = line.split(/==/)
-            pips << {name: name, version: version}
+            pips << {name: name, version: version.chomp}
           end
           pips
         rescue Backend::CommandExecutionError
