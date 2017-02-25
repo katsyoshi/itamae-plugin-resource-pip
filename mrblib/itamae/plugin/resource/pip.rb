@@ -1,4 +1,4 @@
-module MItamae
+module ::MItamae
   module Plugin
     module Resource
       class Pip < ::MItamae::Resource::Base

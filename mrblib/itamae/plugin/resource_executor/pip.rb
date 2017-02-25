@@ -1,4 +1,4 @@
-module MItamae
+module ::MItamae
   module Plugin
     module ResourceExecutor
       class Pip < ::MItamae::ResourceExecutor::Base
