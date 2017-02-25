@@ -1,7 +1,7 @@
 module MItamae
   module Plugin
     module ResourceExecutor
-      class Pip < MItamae::ResourceExecutor::Base
+      class Pip < ::MItamae::ResourceExecutor::Base
         def apply(current, desired)
           if desired.installed
             if current.installed
