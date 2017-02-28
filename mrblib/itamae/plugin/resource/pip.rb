@@ -1,7 +1,7 @@
-module MItamae
+module ::MItamae
   module Plugin
     module Resource
-      class Pip < MItamae::Resource::Base
+      class Pip < ::MItamae::Resource::Base
         define_attribute :action, default: :install
         define_attribute :pip_binary, type: [String, Array], default: 'pip'
         define_attribute :package_name, type: String, default_name: true
