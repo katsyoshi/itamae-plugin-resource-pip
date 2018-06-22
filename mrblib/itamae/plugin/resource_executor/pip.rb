@@ -55,6 +55,8 @@ module ::MItamae
 
         def install!
           cmd = [*Array(attributes.pip_binary), 'install']
+          cmd << attributes.options if attributes.options
+
           if attributes.version
             cmd << "#{attributes.package_name}==#{attributes.version}"
           else
@@ -66,6 +68,8 @@ module ::MItamae
 
         def uninstall!
           cmd = [*Array(attributes.pip_binary), 'uninstall']
+          cmd << attributes.options if attributes.options
+
           if attributes.version
             cmd << "#{attributes.package_name}==#{attributes.version}"
           else
