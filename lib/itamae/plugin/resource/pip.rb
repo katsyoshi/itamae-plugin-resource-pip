@@ -8,7 +8,7 @@ module Itamae
         define_attribute :pip_binary, type: [String, Array], default: ['pip', '--disable-pip-version-check']
         define_attribute :package_name, type: String, default_name: true
         define_attribute :options, type: [String, Array], default: :auto
-        define_attribute :version, type: String, default: false
+        define_attribute :version, type: String
 
         def pre_action
           case @current_action
