@@ -28,6 +28,7 @@ require 'itamae/plugin/resource/pip'
 pip "tornado" do
   pip_binary "/home/user/.pyenv/shims/pip"
   version "4.1"
+  options '--user'
 end
 ```
 
