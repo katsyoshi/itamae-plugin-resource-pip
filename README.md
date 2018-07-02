@@ -47,3 +47,15 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/katyoshi/itamae-plugin-resource-pip. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
+
+### Contributors
+
+[@n0ts](https://github.com/n0ts): [#1](https://github.com/katsyoshi/itamae-plugin-resource-pip/pull/1) delete included version newline code
+
+[@mystelynx](https://github.com/mystelynx): [#2](https://github.com/katsyoshi/itamae-plugin-resource-pip/pull/2) support mitamae
+
+[@ta1kt0me](https://github.com/ta1kt0me): [#3](https://github.com/katsyoshi/itamae-plugin-resource-pip/pull/3) :bug: fixed mitamae
+
+[@citystar](https://github.com/citystar): [#4](https://github.com/katsyoshi/itamae-plugin-resource-pip/pull/4) ignore pip version
+
+[@moritzheiber](https://github.com/moritzheiber): [#5](https://github.com/katsyoshi/itamae-plugin-resource-pip/pull/6) support pip option
