@@ -14,7 +14,7 @@ RUN xargs -L 1 rbenv install < /root/versions.txt
 RUN echo 'gem: --no-rdoc --no-ri' >> /.gemrc
 RUN bash -l -c 'for v in $(cat /root/versions.txt); do rbenv global $v; gem install bundler; done'
 ADD . /itamae-plugin-resource-pip
-RUN which pip
 WORKDIR /itamae-plugin-resource-pip
 RUN bundle install --path .bundle/gems
-RUN bundle exe itamae local ./samples/recipe.rb -l debug
+RUN bundle exec itamae local ./samples/recipe.rb
+RUN bundle exec rspec
