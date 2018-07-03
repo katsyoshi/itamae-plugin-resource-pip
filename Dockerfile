@@ -17,4 +17,3 @@ ADD . /itamae-plugin-resource-pip
 WORKDIR /itamae-plugin-resource-pip
 RUN bundle install --path .bundle/gems
 RUN bundle exec itamae local ./samples/recipe.rb
-RUN bundle exec rspec
