@@ -1,0 +1,12 @@
+sudo: required
+
+language: ruby
+
+services:
+  - docker
+
+before_install:
+  - docker build -t katsyoshi/itamae-plugin-resource-pip .
+
+script:
+  - docker run katsyoshi/itamae-plugin-resource-pip /bin/sh -c "bundle exec rspec"
