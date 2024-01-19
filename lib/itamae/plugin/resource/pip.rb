@@ -1,4 +1,5 @@
 require 'itamae/resource/base'
+require 'strscan'
 
 module Itamae
   module Plugin
@@ -57,8 +58,15 @@ module Itamae
         def installed_pips
           pips = []
           run_command([*Array(attributes.pip_binary), 'freeze']).stdout.each_line do |line|
-            name, version = line.split(/==/)
-            pips << {name: name, version: version.chomp}
+            scanner = StringScanner.new(line)
+            pip = { name: scanner.scan(/[^= ]+/) }
+            if scanner.skip('==')
+              pip[:version] = scanner.rest.chomp
+            elsif scanner.skip(' @ file://') # nop
+            else
+              raise "unknown package format #{line}"
+            end
+            pips << pip
           end
           pips
         rescue Backend::CommandExecutionError
