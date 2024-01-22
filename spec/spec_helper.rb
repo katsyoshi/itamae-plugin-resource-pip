@@ -1,3 +1,2 @@
-require 'serverspec'
-
-set :backend, :exec
+require "itamae"
+require_relative "../lib/itamae/plugin/resource/pip"
