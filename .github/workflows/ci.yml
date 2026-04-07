@@ -14,11 +14,20 @@ jobs:
       fail-fast: false
       matrix:
         ruby-version:
-          - '3.1'
+          - '3.4'
+          - '4.0'
+        python-version:
+          - '3.12'
+          - '3.13'
+          - '3.14'
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
       - run: bundle exec rake
+      - run: bundle exec itamae local samples/recipe.rb
